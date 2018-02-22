@@ -8,5 +8,12 @@ setup(
     license='MIT',
     author='Dan Snow',
     author_email='dfsnow@uchicago.edu',
-    description='A package for generating isochrones from a shapefile'
+    description='A package for generating isochrones from a shapefile',
+    install_requires=[
+        'pandas',
+        'geopandas',
+        'shapely',
+        'fiona',
+        'requests'
+    ],
 )
