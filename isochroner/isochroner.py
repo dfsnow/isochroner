@@ -50,6 +50,7 @@ def iterate_isochrones(coords, key, duration, swap_xy):
     Iterate over a list of coordinates and returns isochrones for each duration
 
     :param coords: Coordinates to iterate over
+    :param key: Google Maps API key passed within function
     :param durations: Single or list of durations to calculate isochrones with
     :param swap_xy: Swap final lat and long values
     :return: Isochrones as polygons
@@ -72,6 +73,7 @@ def shp_to_isochrones(gdf, key, duration, keep_cols=None, swap_xy=True):
     isochrone polygons for different durations
 
     :param gdf: Name of the GeoDataFrame to use for use with centroids
+    :param key: Google Maps API key passed within function
     :param duration: List of durations to create isochrones from
     :param keep_cols: Columns to keep from the original dataframe
     :param swap_xy: Swap output lat and long values
@@ -111,6 +113,7 @@ def isochrones_to_shp(df, filename, crs, format='ESRI Shapefile'):
     Convert a dataframe of isochrones to a shapefile or GeoJSON
 
     :param df: Input dataframe
+    :param key: Google Maps API key passed within function
     :param filename: Filename to save as
     :param crs: CRS to use when creating the output
     :param format: Format to use for output, geojson or esri
@@ -137,13 +140,14 @@ def isochrones_to_shp(df, filename, crs, format='ESRI Shapefile'):
             })
 
 
-def isochrone_batch(gdf, key='', out_filename='isochrones.csv',
+def isochrone_batch(gdf, key, out_filename='isochrones.csv',
                     matching_var='GEOID', duration=15,
                     keep_cols=None, batch_size=5):
     """
     Batch processor for shapefiles to find centroid isochrones
 
     :param gdf: GeoDataFrame to find centroids for
+    :param key: Google Maps API key passed within function
     :param out_filename: CSV to output to
     :param matching_var: Variable to match CSV against shapefile
     :param duration: Duration or list of durations to create isochrones for

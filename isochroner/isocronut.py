@@ -1,4 +1,3 @@
-from __future__ import division
 from math import cos, sin, pi, radians, degrees, asin, atan2
 import requests
 
@@ -38,9 +37,7 @@ def build_url(key='', origin='', destination=''):
 
 
 def parse_json(url=''):
-    """
-    Parse the json response from the API
-    """
+    """ Parse the json response from the API """
     req = requests.get(url)
     d = req.json()
 
@@ -170,6 +167,7 @@ def get_isochrone(origin='', key='', duration='', number_of_angles=12, tolerance
     Get isochrone as a list of lat, long points
 
     :param origin: string address or [lat, lng] 2-list
+    :param key: Google Maps API key to use for query
     :param duration: minutes that the isochrone contour value should map
     :param number_of_angles: how many bearings to calculate this contour for (think of this like resolution)
     :param tolerance: how many minutes within the exact answer for the contour is good enough
