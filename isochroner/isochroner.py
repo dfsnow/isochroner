@@ -1,5 +1,5 @@
 from shapely import geometry, wkt
-import isocronut
+from . import isocronut
 import pandas as pd
 import geopandas as gpd
 import statistics as st
