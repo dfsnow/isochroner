@@ -75,7 +75,6 @@ def geocode_address(key='', address=''):
     # Note that this URL should already be URL-encoded
     prefix = 'https://maps.googleapis.com/maps/api/geocode/json'
     full_url = prefix + '?address={0}&key={1}'.format(address_str, key)
-    print(full_url)
     # Request geocode from address
     req = requests.get(full_url)
     d = req.json()
