@@ -1,5 +1,5 @@
 from shapely import geometry, wkt
-from . import isocronut
+import isochroner
 import pandas as pd
 import geopandas as gpd
 import statistics as st
@@ -126,6 +126,7 @@ def isochrones_to_shp(df, filename, crs, format='ESRI Shapefile'):
     iso_schema = {
         'geometry': 'Polygon',
         'properties': {'id': 'int',
+                       'GEOID': 'str',
                        'coords': 'str',
                        'duration': 'int'}
     }
@@ -135,6 +136,7 @@ def isochrones_to_shp(df, filename, crs, format='ESRI Shapefile'):
             c.write({
                 'geometry': geometry.mapping(geo['geometry']),
                 'properties': {'id': index,
+                               'GEOID': str(geo['GEOID']),
                                'coords': str(geo['coords']),
                                'duration': int(geo['duration'])}
             })
